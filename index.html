@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Landing Page with YouTube Video</title> 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Updated loader style */
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #ccc;
+      border-top-color: #1abc9c;
+      border-radius: 50%;
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #videoContainer {
+      display: none;
+      text-align: center;
+    }
+
+    iframe {
+      width: 800px;
+      height: 450px;
+      border: none;
+    }
+
+    #code {
+      display: none;
+      background-color: #fff;
+      color: #000;
+      margin-top: 30px;
+      padding: 20px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    #code h2 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    #code span {
+      font-size: 80px;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    p {
+      color: #fff;
+    }
+  </style> 
+ </head> 
+ <body> 
+  <div id="loader"> 
+   <div class="spinner"></div> 
+   <p>Loading, please wait...</p> 
+  </div> 
+  <div id="videoContainer"> <iframe id="ytVideo" src="https://www.youtube.com/embed/d95PPykB2vE?autoplay=1&amp;mute=1&amp;rel=0&amp;showinfo=0&amp;modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+   <div id="code"> 
+    <h2>Today code is</h2> <span></span> 
+   </div> 
+  </div> 
+  <script>
+    const loader = document.getElementById('loader');
+    const videoContainer = document.getElementById('videoContainer');
+    const codeDiv = document.getElementById('code');
+
+    // Show loader for 5 seconds
+    setTimeout(() => {
+      loader.style.display = 'none';
+      videoContainer.style.display = 'block';
+
+      // Show code after 30 seconds (i.e., at the end)
+      setTimeout(() => {
+        codeDiv.style.display = 'block';
+      }, 30000);
+
+    }, 5000);
+  </script> 
+ </body>
+</html> 
